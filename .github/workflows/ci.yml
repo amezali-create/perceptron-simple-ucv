@@ -17,9 +17,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pytest pytest-cov
+      - run: pip install --only-binary :all: pytest==8.3.5 pytest-cov==6.0.0 iniconfig==2.0.0 packaging==24.2 pluggy==1.5.0 coverage==7.6.12
       - run: pytest --cov=src --cov-report=xml
-      - uses: SonarSource/sonarcloud-github-action@master
+      - uses: SonarSource/sonarcloud-github-action@15900e7e46a7d8a3f9bb312a100450f4d87d4fb0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
